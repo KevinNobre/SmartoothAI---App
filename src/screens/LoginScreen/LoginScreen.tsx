@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, TextInput, Button, Text } from 'react-native';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
-import { RootStackParamList } from '../navigation/type';
+import { RootStackParamList } from '../../navigation/type';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const LoginScreen: React.FC = () => {
@@ -31,7 +31,6 @@ const LoginScreen: React.FC = () => {
       const { token } = await response.json();
       await AsyncStorage.setItem('token', token); // Armazena o token no AsyncStorage
       setError(null); // Limpa qualquer erro
-      navigation.navigate('TarefasScreen'); // Navega para a tela de tarefas
     } catch (error) {
       setError('Erro de autenticação. Verifique suas credenciais.');
     }
