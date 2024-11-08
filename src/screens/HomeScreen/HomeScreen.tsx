@@ -21,6 +21,7 @@ const HomeScreen: React.FC = () => {
       </Text>
     </Box>
   );
+  
 };
 
 export default HomeScreen;
