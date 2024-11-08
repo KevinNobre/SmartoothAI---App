@@ -3,6 +3,7 @@ import { Box, Text } from 'native-base';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from '../../navigation/type';
 import NavigationBar from '../../components/NavigationBar';
+import SearchBar from '../../components/SearchBar';
 
 const HomeScreen: React.FC = () => {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
@@ -11,15 +12,10 @@ const HomeScreen: React.FC = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState<string | null>(null);
 
-  const handleProfile = () => {
-    navigation.navigate('Perfil');
-  };
 
   return (
     <Box minHeight={'90vh'}>
-      <Text color="black" onPress={handleProfile}>
-        Clique aqui
-      </Text>
+      <SearchBar placeholder="Buscar" />
       <NavigationBar></NavigationBar>
     </Box>
     
