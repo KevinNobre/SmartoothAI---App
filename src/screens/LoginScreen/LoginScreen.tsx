@@ -1,17 +1,37 @@
 import React, { useState } from 'react';
-import { VStack, Input, Text, HStack, Button, Box, Image } from 'native-base';
+import { VStack, Input, Text, HStack, Button, Box, Image, Toast } from 'native-base';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from '../../navigation/type';
+import { loginUser } from '../../services/usuarioPacienteAPI';
 
 const LoginScreen: React.FC = () => {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+  const [email, setEmail] = useState<string>('');
+  const [senha, setSenha] = useState<string>('');
 
-  const handleLogin = () => {
-    navigation.navigate('Home');
+  const handleLogin = async () => {
+    try {
+      const usuario = await loginUser(email, senha);
+
+      if (usuario) {
+        navigation.navigate('Home');
+      } else {
+        Toast.show({
+          description: 'E-mail ou senha não conferem. Tente novamente.',
+          bgColor: 'red.500',
+        });
+      }
+    } catch (error) {
+      console.error('Erro ao tentar fazer login', error);
+      Toast.show({
+        description: 'Erro ao tentar fazer login. Tente novamente.',
+        bgColor: 'red.500',
+      });
+    }
   };
 
   const handleCadastro = () => {
-    navigation.navigate("Cadastro");
+    navigation.navigate('Cadastro');
   };
 
   return (
@@ -36,6 +56,8 @@ const LoginScreen: React.FC = () => {
             borderColor: "#FFA74F",
             bg: "white",
           }} 
+          value={email}
+          onChangeText={(text) => setEmail(text)} 
         />
         <VStack width="100%" maxWidth="317px" marginBottom={'1rem'}>
           <Input 
@@ -50,10 +72,10 @@ const LoginScreen: React.FC = () => {
               borderColor: "#FFA74F",
               bg: "white",
             }} 
+            value={senha}
+            onChangeText={(text) => setSenha(text)} 
           />
-          <HStack flex={1} justifyContent="flex-end" alignItems="center" marginTop={1}>
-            <Text fontSize="sm" color="black">Esqueceu a senha?</Text>
-          </HStack>
+
         </VStack>
 
         <HStack flex={1} justifyContent="center" alignItems="center" padding={2} width="100%">
