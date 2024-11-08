@@ -6,6 +6,7 @@ import LoginScreen from '../screens/LoginScreen/LoginScreen';
 import HomeScreen from '../screens/HomeScreen/HomeScreen';
 import CadastroScreen from '../screens/CadastroScreen/CadastroScreen';
 import ProfileScreen from '../screens/ProfileScreen/ProfileScreen';
+import ForgotPasswordScreen from '../screens/ForgotPasswordScreen/ForgotPasswordScreen';
 
 
 
@@ -19,7 +20,8 @@ const AppNavigator: React.FC = () => {
         <Stack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Cadastro" component={CadastroScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} /> 
-        <Stack.Screen name="Perfil" component={ProfileScreen} options={{ headerShown: false }} /> 
+        <Stack.Screen name="Perfil" component={ProfileScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="ForgotPassword" component={ForgotPasswordScreen} options={{ headerShown: false }} /> 
       </Stack.Navigator>
     </NavigationContainer>
   );

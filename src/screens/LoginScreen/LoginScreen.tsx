@@ -34,6 +34,7 @@ const LoginScreen: React.FC = () => {
           borderColor: "#FFA74F", 
           bg: "white",        
         }} />
+          <Text color="black"   mt={4}  onPress={() => navigation.navigate('ForgotPassword')}>Esqueceu a Senha?</Text>
 
 
         <HStack flex={1} justifyContent="center" alignItems="center" padding={2} width="100%">

@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "smartooth-app",
-    "slug": "smartooth-app",
+    "name": "Smartooth",
+    "slug": "Smartooth",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
