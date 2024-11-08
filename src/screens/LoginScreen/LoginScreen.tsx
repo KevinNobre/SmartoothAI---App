@@ -18,10 +18,12 @@ const LoginScreen: React.FC = () => {
 
   return (
     <Box flex={1} bg="#F1F1F1" justifyContent="center" alignItems="center" padding={5}>
+      <Image source={require('../../assets/odontoprev.png')} />
+      <Text fontSize="sm" fontWeight={500} color="black" marginBottom={'1rem'}>apresenta</Text>
 
       <VStack space={4} justifyContent="center" alignItems="center" width="85%">
-      <Image source={require('../../assets/logo.png')} style={{ width: 100, height: 100 }} />
-        <Text fontSize="3xl" bold color="black">SmarTooth</Text>
+      <Text fontSize="xl" fontWeight={500} color="black">Smartooth</Text>
+      <Image source={require('../../assets/logo.png')} height={'120px'} width={'120px'} marginBottom={'1rem'}/>
 
         <Input placeholder="E-mail" bg="white" maxWidth="317px" width="100%" marginBottom={'1rem'} focusOutlineColor="#FFA74F"
         borderRadius={8} _focus={{
