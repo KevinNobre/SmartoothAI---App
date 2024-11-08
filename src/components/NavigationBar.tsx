@@ -1,76 +1,58 @@
-// src/components/BottomNavigationBar.tsx
 import React from 'react';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { View, Text, StyleSheet } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import { NavigationProp, useNavigation } from '@react-navigation/native';
+import { RootStackParamList } from '../navigation/type';
 
-const HomeScreen = () => (
-  <View style={styles.screen}>
-    <Text>Home Screen</Text>
-  </View>
-);
+const NavigationBar: React.FC = () => {
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
 
-const SearchScreen = () => (
-  <View style={styles.screen}>
-    <Text>Search Screen</Text>
-  </View>
-);
-
-const NotificationsScreen = () => (
-  <View style={styles.screen}>
-    <Text>Notifications Screen</Text>
-  </View>
-);
-
-const ProfileScreen = () => (
-  <View style={styles.screen}>
-    <Text>Profile Screen</Text>
-  </View>
-);
-
-const Tab = createBottomTabNavigator();
-
-const BottomNavigationBar = () => {
   return (
-    <Tab.Navigator
-      initialRouteName="Home"
-      screenOptions={({ route }) => ({
-        tabBarIcon: ({ color, size }) => {
-          // Initialize iconName with a default value
-          let iconName: string = '';
-
-          // Set the iconName based on the route
-          if (route.name === 'Home') {
-            iconName = '🏠'; // Home icon
-          } else if (route.name === 'Search') {
-            iconName = '🔍'; // Search icon
-          } else if (route.name === 'Notifications') {
-            iconName = '🔔'; // Notifications icon
-          } else if (route.name === 'Profile') {
-            iconName = '👤'; // Profile icon
-          }
-
-          return <Text style={{ fontSize: size, color: color }}>{iconName}</Text>;
-        },
-        tabBarActiveTintColor: '#6200ea', 
-        tabBarInactiveTintColor: 'gray', // Cor do ícone inativo
-        tabBarStyle: { backgroundColor: '#fff', borderTopWidth: 0 }, // Estilo da barra de navegação
-      })}
-    >
-      <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Search" component={SearchScreen} />
-      <Tab.Screen name="Notifications" component={NotificationsScreen} />
-      <Tab.Screen name="Profile" component={ProfileScreen} />
-    </Tab.Navigator>
+    <View style={styles.navBar}>
+      <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+        <Text style={styles.navText}>Home</Text>
+      </TouchableOpacity>
+      {/* <TouchableOpacity onPress={() => navigation.navigate('Atendimento')}>
+        <Text style={styles.navText}>Atendimento</Text>
+      </TouchableOpacity> */}
+      {/* <TouchableOpacity onPress={() => navigation.navigate('Prontuario')}>
+        <Text style={styles.navText}>Prontuário</Text>
+      </TouchableOpacity> */}
+      {/* <TouchableOpacity onPress={() => navigation.navigate('Dicas')}>
+        <Text style={styles.navText}>Dicas</Text>
+      </TouchableOpacity> */}
+      <TouchableOpacity onPress={() => navigation.navigate('Perfil')}>
+        <Text style={styles.navText}>Perfil</Text>
+      </TouchableOpacity>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+  navBar: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '100%',
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    backgroundColor: '#fff',
+    position: 'absolute',
+    bottom: 0,
+    shadowRadius: 4,
+    elevation: 4,
+    shadowOpacity: 1,
+    borderStyle: "solid",
+    borderTopColor: "rgba(0, 0, 0, 0.4)",
+    borderTopWidth: 1,
+  },
+  navText: {
+    fontSize: 12,
+    fontWeight: "600",
+    fontFamily: "Inter-SemiBold",
+    color: "#000",
+    textAlign: "left",
+    width: 35
   },
 });
 
-export default BottomNavigationBar;
-
+export default NavigationBar;

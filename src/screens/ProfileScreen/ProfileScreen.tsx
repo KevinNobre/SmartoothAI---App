@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from '../../navigation/type';
+import NavigationBar from '../../components/NavigationBar';
 
 const ProfileScreen: React.FC = () => {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
@@ -34,6 +35,7 @@ const ProfileScreen: React.FC = () => {
         <Text style={styles.buttonText}>Conheça quem está por trás</Text>
       </TouchableOpacity>
 
+      <NavigationBar />
     </View>
   );
 };

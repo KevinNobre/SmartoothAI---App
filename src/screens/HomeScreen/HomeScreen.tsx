@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Box, Text } from 'native-base';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from '../../navigation/type';
+import NavigationBar from '../../components/NavigationBar';
 
 const HomeScreen: React.FC = () => {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
@@ -15,11 +16,16 @@ const HomeScreen: React.FC = () => {
   };
 
   return (
-    <Box>
+    <Box minHeight={'90vh'}>
       <Text color="black" onPress={handleProfile}>
         Clique aqui
       </Text>
+      <NavigationBar></NavigationBar>
     </Box>
+    
+
+
+
   );
 };
 
