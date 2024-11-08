@@ -37,5 +37,18 @@ export const loginUser = async (email: string, senha: string) => {
     }
   }
 };
+
+export const createUser = async (novoUsuario: UsuarioPacienteDTO) => {
+    try {
+      const response = await api.post('/usuarios', novoUsuario);
+      return response.data;
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        throw new Error(error.message || 'Erro ao criar usuário');
+      } else {
+        throw new Error('Erro desconhecido ao criar usuário');
+      }
+    }
+  };
     
 
