@@ -18,8 +18,7 @@ const ProfileScreen: React.FC = () => {
         <Text style={styles.logoffText}>Logoff</Text>
       </TouchableOpacity>
 
-      <Image source={require('../../assets/giselle.png')}style={styles.profileImage}
-      />
+      <Image source={require('../../assets/giselle.png')}style={styles.profileImage}/>
       <Text style={styles.greeting}>Oi, {username}</Text>
 
       <View style={styles.messageBox}>
@@ -106,15 +105,7 @@ const styles = StyleSheet.create({
   buttonText: {
     color: '#000',
     fontWeight: 'bold',
-  },
-  navBar: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    width: '100%',
-    position: 'absolute',
-    bottom: 20,
-    paddingHorizontal: 20,
-  },
+  }
 });
 
 export default ProfileScreen;
