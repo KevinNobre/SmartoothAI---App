@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, TextInput, Button, Text } from 'react-native';
 import { RootStackParamList } from '../../navigation/type';
 
-const HomeScreen: React.FC = () => {
+const CadastroScreen: React.FC = () => {
     const [username, setUsername] = useState(''); // Altera email para username
     const [password, setPassword] = useState(''); // Altera senha para password
     const [error, setError] = useState<string | null>(null);
@@ -15,4 +15,4 @@ const HomeScreen: React.FC = () => {
     );
   };
   
-  export default HomeScreen;
+  export default CadastroScreen;
