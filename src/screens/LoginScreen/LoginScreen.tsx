@@ -1,33 +1,34 @@
-import React, { useState } from 'react';
-import { View, TextInput, Button, Text } from 'react-native';
+import React from 'react';
+import { View, TextInput, } from 'react-native';
+import { VStack, Input, Text, Image, useNativeBase, HStack, Button, Box} from 'native-base';
 import { NavigationProp, useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from '../../navigation/type';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const LoginScreen: React.FC = () => {
-  const [username, setUsername] = useState(''); // Altera email para username
-  const [password, setPassword] = useState(''); // Altera senha para password
-  const [error, setError] = useState<string | null>(null);
-  const navigation = useNavigation<NavigationProp<RootStackParamList>>(); // Utilize o tipo
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+
+  const handleLogin = () => {
+    navigation.navigate('HomeScreen'); // direciona para a tela principal
+  };
+
+  const handleCadastro = () => {
+    navigation.navigate("LoginScreen"); // direciona para a tela de cadastro
+  };
+
 
   return (
-    <View>
-      <TextInput
-        placeholder="Username" // Altere o placeholder para Username
-        value={username}
-        onChangeText={setUsername}
-        style={{ marginBottom: 10 }}
-      />
-      <TextInput
-        placeholder="Senha"
-        value={password} // Altere para password
-        onChangeText={setPassword} // Altere para setPassword
-        secureTextEntry
-        style={{ marginBottom: 10 }}
-      />
-      <Button title="Login" />
-      {error && <Text style={{ color: 'red' }}>{error}</Text>}
-    </View>
+    <Box flex={1} bg="blue.600">
+      <VStack space={4} alignItems="center" width="100%">
+        <Image source={require('../components/img/jovens-loginScreen.jpg')} alt="img" size="100%" />
+        <Text fontSize="3xl" bold color="white">Oralytics</Text>
+        <Input width={"85%"} placeholder="Email"/>
+        <Input width={"85%"} placeholder="Senha" type="password"/>
+        <HStack space={2} padding={2}>
+          <Button onPress={handleCadastro} borderRadius={8} bg="white" _text={{ bold: true, color: "black" }}>Primeiro Acesso?</Button>
+          <Button onPress={handleLogin} borderRadius={8} bg="white" _text={{ bold: true, color: "black" }}>Acessar</Button>
+        </HStack>
+      </VStack>
+    </Box>
   );
 };
 
