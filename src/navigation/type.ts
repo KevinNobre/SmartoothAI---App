@@ -1,6 +1,6 @@
 export type RootStackParamList = {
-    LoginScreen: undefined; 
-    HomeScreen: undefined;  
-    CadastroScreen: undefined;
-    ProfileScreen: undefined;
+    Login: undefined; 
+    Home: undefined;  
+    Cadastro: undefined;
+    Perfil: undefined;
   };
