@@ -26,9 +26,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     fontFamily: "Inter-Regular",
     borderRadius: 15,
-    paddingHorizontal: 10,
-    paddingVertical: 8,
-    marginVertical: 10,
+    paddingHorizontal: 4,
+    paddingVertical: 5,
+    marginVertical: 4,
   },
   searchInput: {
     flex: 1,
