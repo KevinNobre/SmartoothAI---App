@@ -10,24 +10,24 @@ const LoginScreen: React.FC = () => {
   const [senha, setSenha] = useState<string>('');
 
   const handleLogin = async () => {
-    try {
-      const usuario = await loginUser(email, senha);
+   try {
+       const usuario = await loginUser(email, senha);
 
-      if (usuario) {
-        navigation.navigate('Home');
-      } else {
-        Toast.show({
-          description: 'E-mail ou senha não conferem. Tente novamente.',
-          bgColor: 'red.500',
-        });
-      }
-    } catch (error) {
-      console.error('Erro ao tentar fazer login', error);
-      Toast.show({
-        description: 'Erro ao tentar fazer login. Tente novamente.',
-        bgColor: 'red.500',
-      });
-    }
+       if (usuario) {
+         navigation.navigate('Home');
+       } else {
+         Toast.show({
+           description: 'E-mail ou senha não conferem. Tente novamente.',
+           bgColor: 'red.500',
+         });
+       }
+     } catch (error) {
+       console.error('Erro ao tentar fazer login', error);
+       Toast.show({
+         description: 'Erro ao tentar fazer login. Tente novamente.',
+         bgColor: 'red.500',
+       });
+     }
   };
 
   const handleCadastro = () => {

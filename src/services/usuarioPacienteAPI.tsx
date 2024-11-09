@@ -38,6 +38,27 @@ export const loginUser = async (email: string, senha: string) => {
   }
 };
 
+// Função para recuperar a senha
+export const recoverPassword = async (email: string) => {
+  try {
+    // Aqui você faz um POST ou GET conforme a sua API
+    const response = await api.post('/usuarios', { email });
+
+    // Se a resposta for bem-sucedida, retorna a mensagem de sucesso
+    if (response.data && response.data.message) {
+      return response.data.message; // Mensagem de sucesso do servidor
+    } else {
+      throw new Error('Falha ao enviar solicitação de recuperação de senha');
+    }
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      throw new Error(error.message || 'Erro ao tentar recuperar a senha');
+    } else {
+      throw new Error('Erro desconhecido');
+    }
+  }
+};
+
 export const createUser = async (novoUsuario: UsuarioPacienteDTO) => {
     try {
       const response = await api.post('/usuarios', novoUsuario);

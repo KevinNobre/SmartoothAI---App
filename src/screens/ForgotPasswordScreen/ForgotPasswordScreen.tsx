@@ -2,18 +2,41 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, TouchableOpacity, Alert } from 'react-native';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
 import { RootStackParamList } from '../../navigation/type';
+import { recoverPassword } from '../../services/usuarioPacienteAPI';
 
 const ForgotPasswordScreen: React.FC = () => {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
   const [email, setEmail] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleResetPassword = () => {
-    if (email) {
-      ////// FUTURAMENTE IMPLEMENTAR ROTA DE ENVIO DE E-MAIL/////////
-      Alert.alert('Verifique seu e-mail', 'As instruções para redefinir a senha foram enviadas.');
-      navigation.navigate('Login'); 
-    } else {
+  const handleResetPassword = async () => {
+    if (!email) {
       Alert.alert('Erro', 'Por favor, insira um e-mail válido.');
+      return;
+    }
+
+    try {
+      setIsLoading(true);
+
+      // Chama a função de recuperação de senha
+      const responseMessage = await recoverPassword(email);
+
+      setIsLoading(false);
+
+      // Exibe uma mensagem de sucesso
+      Alert.alert('Verifique seu e-mail', responseMessage);
+
+      // Navega de volta para a tela de Login
+      navigation.navigate('Login');
+    } catch (error: unknown) {
+      setIsLoading(false);
+      
+      // Verifica se o erro é uma instância de Error e trata
+      if (error instanceof Error) {
+        Alert.alert('Erro', error.message || 'Ocorreu um erro ao tentar enviar as instruções.');
+      } else {
+        Alert.alert('Erro', 'Ocorreu um erro desconhecido.');
+      }
     }
   };
 
@@ -21,13 +44,20 @@ const ForgotPasswordScreen: React.FC = () => {
     <View style={styles.container}>
       <Text style={styles.title}>Esqueceu a senha?</Text>
       <Text style={styles.description}>Insira seu e-mail para receber instruções de redefinição.</Text>
-      
-      <TextInput style={[styles.input, { backgroundColor: 'white' }]} placeholder="E-mail" placeholderTextColor="#999" value={email} onChangeText={setEmail}
+
+      <TextInput
+        style={[styles.input, { backgroundColor: 'white' }]}
+        placeholder="E-mail"
+        placeholderTextColor="#999"
+        value={email}
+        onChangeText={setEmail}
         keyboardType="email-address"
       />
 
-      <TouchableOpacity style={styles.resetButton} onPress={handleResetPassword}>
-        <Text style={styles.resetButtonText}>Enviar Instruções</Text>
+      <TouchableOpacity style={styles.resetButton} onPress={handleResetPassword} disabled={isLoading}>
+        <Text style={styles.resetButtonText}>
+          {isLoading ? 'Enviando...' : 'Enviar Instruções'}
+        </Text>
       </TouchableOpacity>
 
       <TouchableOpacity onPress={() => navigation.navigate('Login')}>
