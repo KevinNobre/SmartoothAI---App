@@ -60,5 +60,11 @@ O projeto abrange o desenvolvimento de um sistema que:
 - O tempo de resposta para operações de CRUD deve ser minimizado para garantir uma boa experiência do usuário.
 - O sistema deve ser desenvolvido seguindo boas práticas de programação e design de software, utilizando princípios de SOLID.
 
+### Exemplo de Teste
+
+- Requisição de Login com utilização da API + Banco de Dados Oracle
+
+  ![Login](https://github.com/user-attachments/assets/6a5f669b-d6ab-4cd7-b532-b0c1db41b646)
+
 
       
