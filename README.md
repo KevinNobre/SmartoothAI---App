@@ -117,6 +117,7 @@ Uma vez autenticado, o usuário permanece logado até executar o logout, que enc
 Este diagrama é essencial para garantir que os processos de segurança e navegação estejam coerentes e funcionais.
 
 
+---
 
 
 ### Exemplo de Teste
