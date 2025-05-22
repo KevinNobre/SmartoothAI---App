@@ -60,11 +60,106 @@ O projeto abrange o desenvolvimento de um sistema que:
 - O tempo de resposta para operações de CRUD deve ser minimizado para garantir uma boa experiência do usuário.
 - O sistema deve ser desenvolvido seguindo boas práticas de programação e design de software, utilizando princípios de SOLID.
 
+---
+## 📊 Diagrama 1: Fluxo de Informações e Navegação no Aplicativo
+Este diagrama representa o fluxo geral de telas e navegação no aplicativo SmartoothAI. Ele demonstra como o usuário interage com o sistema desde o início até acessar as funcionalidades disponíveis após a autenticação.
+
+![Fluxo de Informação e Processo de Autenticação ](https://github.com/user-attachments/assets/8ea91945-5dd5-42ca-b958-2ac5168677a5)
+
+✏️ Descrição:
+
+Início: Tela inicial do app, normalmente usada para verificações de sessão ou redirecionamento.
+
+Login / Registro: Pontos de entrada para autenticação do usuário.
+
+Dashboard Principal: Primeira tela visualizada após o login, onde dados e atalhos principais são apresentados.
+
+Menu Principal: Permite navegar entre funcionalidades importantes do app:
+
+Perfil do Usuário: Edição de dados pessoais e preferências.
+
+Histórico de Consultas: Exibe registros anteriores de atendimentos.
+
+Agendamento de Consulta: Funcionalidade para marcar novas consultas.
+
+Configurações: Ajustes gerais do aplicativo.
+
+Sair: Finaliza a sessão do usuário.
+
+Este fluxo ajuda a visualizar a experiência do usuário (UX) e pode ser útil para desenvolvedores, designers e testers compreenderem a estrutura geral do aplicativo.
+
+---
+
+## 🔐 Diagrama 2: Processo de Autenticação
+Este segundo gráfico detalha o fluxo de autenticação, incluindo os passos para login, logout e registro de usuários.
+
+![Fluxo de Informação e Processo de Autenticação](https://github.com/user-attachments/assets/7962e438-f264-46ba-a829-2809b6df2aed)
+
+
+✏️ Descrição:
+
+O usuário abre o aplicativo.
+
+O sistema verifica automaticamente se há uma sessão ativa:
+
+Se sim, o usuário é direcionado diretamente para o Dashboard Principal.
+
+Se não, o usuário vê a tela de login.
+
+A partir da tela de login, o usuário pode:
+
+Inserir suas credenciais e acessar o sistema.
+
+Navegar para a tela de registro caso ainda não possua conta.
+
+Uma vez autenticado, o usuário permanece logado até executar o logout, que encerra a sessão e o redireciona à tela inicial.
+
+Este diagrama é essencial para garantir que os processos de segurança e navegação estejam coerentes e funcionais.
+
+
+
+
 ### Exemplo de Teste
 
 - Requisição de Login com utilização da API + Banco de Dados Oracle
 
   ![Login](https://github.com/user-attachments/assets/6a5f669b-d6ab-4cd7-b532-b0c1db41b646)
+
+---
+
+### 📋 Requisitos para Execução
+
+## 🧪 Tecnologias Utilizadas
+
+- **React Native**: Framework para desenvolvimento mobile multiplataforma.
+- **Expo**: Ferramenta que simplifica o processo de build, deploy e teste de apps React Native.
+- **TypeScript**: Superset de JavaScript que adiciona tipagem estática.
+- **Expo Router**: Gerenciador de rotas baseado na estrutura de pastas do projeto.
+- **React Navigation**: Navegação entre telas (utilizado via Expo Router).
+- **AsyncStorage**: Armazenamento local de dados do usuário, como sessão e preferências.
+
+Para executar o aplicativo SmartoothAI em seu ambiente de desenvolvimento, é necessário atender aos seguintes requisitos:
+
+- **Sistema Operacional**:
+  - Windows 10 ou superior
+  - macOS 11 ou superior
+  - Distribuições Linux compatíveis com Node.js e Expo
+
+- **Ferramentas Necessárias**:
+  - [Node.js (versão LTS recomendada)](https://nodejs.org/)
+  - [Expo CLI](https://docs.expo.dev/get-started/installation/)
+  - [Yarn](https://classic.yarnpkg.com/) ou npm
+  - Editor de código (VS Code recomendado)
+  - Emulador Android/iOS ou dispositivo físico com o aplicativo **Expo Go**
+
+### 🚀 Instruções de Instalação e Execução
+
+## Instalar APK 
+
+Se preferir instalar diretamente o APK no Android:
+
+- Faça o download do arquivo `.apk`. na pasta do projeto.
+- Transfira para o dispositivo e instale manualmente (habilite a instalação de fontes desconhecidas).
 
 
       
